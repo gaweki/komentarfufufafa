@@ -1,0 +1,168 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f5f5f5;
+  }
+
+  h1 {
+    color: #2c3e50;
+    text-align: center;
+    margin: 20px 0;
+    font-size: 2.5em;
+  }
+
+  .search-container {
+    margin: 20px 0;
+    text-align: center;
+    width: 100%;
+  }
+
+  #searchInput {
+    padding: 12px 20px;
+    width: 80%;
+    max-width: 400px;
+    font-size: 16px;
+    border: 2px solid #ddd;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  }
+
+  #searchInput:focus {
+    outline: none;
+    border-color: #3498db;
+    box-shadow: 0 2px 10px rgba(52,152,219,0.3);
+  }
+
+  #commentsContainer {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  #commentsContainer li {
+    background: white;
+    margin: 15px;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    transition: transform 0.2s ease;
+  }
+
+  #commentsContainer li:hover {
+    transform: translateY(-3px);
+  }
+
+  #commentsContainer img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 15px;
+  }
+
+  #commentsContainer p {
+    color: #34495e;
+    font-size: 16px;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0 10px;
+  }
+
+  /* View mode controls */
+.view-controls {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.view-controls button {
+  padding: 10px;
+  margin: 0 5px;
+  border: 1px solid #3498db;
+  background: white;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.view-controls button i {
+  font-size: 18px;
+  color: #3498db;
+}
+
+.view-controls button.active {
+  background: #3498db;
+}
+
+.view-controls button.active i {
+  color: white;
+}
+
+/* List View - Default */
+#commentsContainer.list-view {
+  display: block;
+}
+
+#commentsContainer.list-view li {
+  width: 100%;
+  margin: 15px 0;
+}
+
+/* Grid View */
+#commentsContainer.grid-view {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px 30px; /* Increased horizontal gap between grid items */
+  padding: 15px 30px; /* Added horizontal padding to the container */
+}
+
+#commentsContainer.grid-view li {
+  margin: 0;
+  width: 100%;
+  padding: 20px; /* Added more padding inside each grid item */
+}
+
+/* Responsive Grid */
+@media (max-width: 1200px) {
+  #commentsContainer.grid-view {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 900px) {
+  #commentsContainer.grid-view {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  #commentsContainer.grid-view {
+    grid-template-columns: 1fr;
+  }
+}
+
+  @media (max-width: 600px) {
+    body {
+      padding: 10px;
+    }
+
+    h1 {
+      font-size: 2em;
+      margin: 15px 0;
+    }
+
+    #searchInput {
+      width: 90%;
+      padding: 10px 15px;
+    }
+
+    #commentsContainer li {
+      margin: 10px 5px;
+      padding: 10px;
+    }
+  }

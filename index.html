@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Komentar Fufufafa</title>
+      <link rel="stylesheet" href="styles.css">
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+   </head>
+   <body>
+      <div class="search-container">
+         <input type="text" id="searchInput" placeholder="Search comments...">
+         <div class="view-controls">
+            <button onclick="setViewMode('list')" class="active">
+               <span class="material-icons">view_list</span>
+            </button>
+            <button onclick="setViewMode('grid')">
+               <span class="material-icons">grid_view</span>
+            </button>
+          </div>
+      </div>
+      <h1>Komentar</h1>
+      <ul id="commentsContainer">
+      </ul>
+   </body>
+   <script>
+    function setViewMode(mode) {
+        const container = document.getElementById('commentsContainer');
+        const buttons = document.querySelectorAll('.view-controls button');
+        
+        container.classList.remove('list-view', 'grid-view');
+        container.classList.add(`${mode}-view`);
+        
+        buttons.forEach(btn => btn.classList.remove('active'));
+        event.target.closest('button').classList.add('active');
+    }
+   </script>
+   <script type="module">
+    import data from './data.js';
+    
+    const searchInput = document.getElementById('searchInput');
+    const commentsContainer = document.getElementById('commentsContainer');
+    
+    function displayComments(searchTerm = '') {
+        commentsContainer.innerHTML = '';
+        
+        const filteredData = data.filter(item => 
+            item.label.toLowerCase().includes(searchTerm.toLowerCase())
+        );
+        
+        filteredData.forEach(item => {
+            const li = document.createElement('li');
+            li.innerHTML = `
+                <img src="${item.value}" alt="comment image" style="max-width: 300px">
+            `;
+            commentsContainer.appendChild(li);
+        });
+    }
+    
+    searchInput.addEventListener('input', (e) => {
+        displayComments(e.target.value);
+    });
+    
+    displayComments();
+   </script>
+</html>
